@@ -10,7 +10,7 @@ var remove = function onDelete(req, res, next) {
 
 	var query = { _id: id, user: req.user._id };
 
-	Product.findAndRemove(query, function onRemove(err, product) {
+	Product.findOneAndRemove(query, function onRemove(err, product) {
 		if (err) return next(err);
 
 		var ext = path.extname(product.image);
