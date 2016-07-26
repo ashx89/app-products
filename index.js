@@ -9,7 +9,7 @@ var uploadImage = multer().single('image');
 /**
  * Rest:: Products
  */
-app.get('/:product/:id', require('./middlewares/routeValidation'), require('./controller/fetch'));
+app.get('/:product/:id?', require('./middlewares/routeValidation'), require('./controller/fetch'));
 app.post('/:product', require('./middlewares/routeValidation'), uploadImage, require('./controller/create'));
 app.patch('/:product/:id', require('./middlewares/routeValidation'), uploadImage, require('./controller/update'));
 app.delete('/:product/:id', require('./middlewares/routeValidation'), uploadImage, require('./controller/delete'));
