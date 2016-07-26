@@ -1,9 +1,9 @@
 var _ = require('underscore');
 
-var Meal = require(global.__products_base + '/models/meal');
+var Product = require(global.__products_base + '/models/product');
 
 /**
- * Fetch a meal
+ * Fetch a product
  */
 var fetch = function onFetch(req, res, next) {
 	var id = req.params.id;
@@ -12,7 +12,7 @@ var fetch = function onFetch(req, res, next) {
 
 	if (id) query = _.extend(query, { _id: id });
 
-	Meal.find(query, function onFind(err, doc) {
+	Product.find(query, function onFind(err, doc) {
 		if (err) return next(err);
 		if (!doc || !doc.length) return next(new Error('No meals have been created'));
 

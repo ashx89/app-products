@@ -4,18 +4,17 @@ var express = require('express');
 var multer = require('multer');
 
 var app = express();
-
 var uploadImage = multer().single('image');
 
 /**
- * Rest:: Account
+ * Rest:: Products
  */
-app.get('/products', require('./components/meals/fetch'));
-app.get('/products/:id', require('./components/meals/fetch'));
-app.post('/products', uploadImage, require('./components/meals/create'));
-app.patch('/products/:id', uploadImage, require('./components/meals/update'));
+app.get('/:product', require('./middlewares/routeValidation'), require('./controller/fetch'));
+app.get('/:product/:id', require('./middlewares/routeValidation'), require('./controller/fetch'));
+app.post('/:product', require('./middlewares/routeValidation'), uploadImage, require('./controller/create'));
+app.patch('/:product/:id', require('./middlewares/routeValidation'), uploadImage, require('./controller/update'));
 
 module.exports = {
 	app: app,
-	model: require('./models/meal')
+	model: require('./models/product')
 };

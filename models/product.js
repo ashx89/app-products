@@ -5,7 +5,7 @@ function validTextLength(value) {
 	return value.length < 300;
 }
 
-var mealSchema = new mongoose.Schema({
+var productSchema = new mongoose.Schema({
 	user: { type: mongoose.Schema.Types.ObjectId },
 	title: {
 		type: String,
@@ -27,10 +27,12 @@ var mealSchema = new mongoose.Schema({
 		type: Number,
 		validate: [validator.isNumeric, 'Invalid Price']
 	},
+	type: String,
+	tags: Array,
 	url: String
 });
 
-mealSchema.set('toJSON', {
+productSchema.set('toJSON', {
 	virtuals: true,
 	transform: function onTransform(doc, ret) {
 		delete ret.id;
@@ -39,4 +41,4 @@ mealSchema.set('toJSON', {
 	}
 });
 
-module.exports = mongoose.model('meal', mealSchema);
+module.exports = mongoose.model('product', productSchema);
