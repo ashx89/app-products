@@ -21,7 +21,7 @@ function databaseOperation(product, req, res, next) {
 var create = function onCreate(req, res, next) {
 	var product = new Product(req.body);
 
-	product.url = '/products/' + product._id;
+	product.url = '/' + req.params.product + '/' + product._id;
 	product.type = req.params.product;
 
 	if (req.file) {
