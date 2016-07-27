@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var paginate = require('mongoose-paginate');
 var validator = require('mongoose-validators');
 
 function validTextLength(value) {
@@ -41,4 +42,15 @@ productSchema.set('toJSON', {
 	}
 });
 
+/**
+ * Pagination defaults
+ * Add paginate to model
+ */
+paginate.paginate.options = {
+	sort: 'title',
+	lean: true,
+	limit: 10
+};
+
+productSchema.plugin(paginate);
 module.exports = mongoose.model('Product', productSchema);
