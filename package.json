@@ -7,5 +7,13 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Ashley J. Taylor",
-  "license": "ISC"
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashx89/app-products.git"
+  },
+  "bugs": {
+    "url": "https://github.com/ashx89/app-products/issues"
+  },
+  "homepage": "https://github.com/ashx89/app-products#readme"
 }
