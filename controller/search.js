@@ -14,6 +14,10 @@ var search = function onSearch(req, res, next) {
 		opts.query = _.extend(opts.query, { type: req.query.type });
 	}
 
+	if (req.query.id) {
+		opts.query = _.extend(opts.query, { _id: req.query.id });
+	}
+
 	require('app-search')(opts).runSearch(function onSearch(err, result) {
 		return res.status(200).json(result);
 	});
