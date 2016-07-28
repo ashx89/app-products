@@ -28,6 +28,7 @@ var productSchema = new mongoose.Schema({
 		type: Number,
 		validate: [validator.isNumeric, 'Invalid Price']
 	},
+	options: Array,
 	type: String,
 	tags: Array,
 	url: String

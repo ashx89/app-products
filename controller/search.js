@@ -8,6 +8,13 @@ var search = function onSearch(req, res, next) {
 		sort: req.query.sort || 'title'
 	};
 
+	if (req.query.price.min || req.query.price.max) {
+		opts.query.price = {
+			'$gt': parseInt(req.query.price.min, 10) || 0,
+			'$lt': parseInt(req.query.price.max, 10) || 0
+		};
+	}
+
 	require('app-search')(opts).runSearch(function onSearch(err, result) {
 		return res.status(200).json(result);
 	});
