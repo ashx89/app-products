@@ -30,7 +30,7 @@ var update = function onUpdate(req, res, next) {
 			upload({
 				req: req,
 				model: product,
-				folder: 'products/' + req.params.product
+				folder: 'products/'
 			}, function onImageUpload(err, result) {
 				if (err) return next(err);
 

@@ -16,7 +16,7 @@ var remove = function onDelete(req, res, next) {
 
 		var ext = path.extname(product.image);
 
-		s3.delete([{ Key: 'users/' + req.user._id + '/products/' + req.params.product + '/' + req.params.id + ext }], function onDelete(err, result) {
+		s3.delete([{ Key: 'users/' + req.user._id + '/products/' + req.params.id + ext }], function onDelete(err, result) {
 			if (err) return next(err);
 			return res.status(200).json(result);
 		});
