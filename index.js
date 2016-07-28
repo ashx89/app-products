@@ -6,15 +6,17 @@ var multer = require('multer');
 var app = express();
 var uploadImage = multer().single('image');
 
+app.use(require('./middlewares/routeValidation'));
+
 /**
  * Rest:: Products
  */
-app.get('/:product/search', require('./middlewares/routeValidation'), require('./controller/search'));
-app.get('/:product', require('./middlewares/routeValidation'), require('./controller/fetch'));
-app.get('/:product/:id', require('./middlewares/routeValidation'), require('./controller/fetch'));
-app.post('/:product', require('./middlewares/routeValidation'), uploadImage, require('./controller/create'));
-app.patch('/:product/:id', require('./middlewares/routeValidation'), uploadImage, require('./controller/update'));
-app.delete('/:product/:id', require('./middlewares/routeValidation'), uploadImage, require('./controller/delete'));
+app.get('/:product/search', require('./controller/search'));
+app.get('/:product', require('./controller/fetch'));
+app.get('/:product/:id', require('./controller/fetch'));
+app.post('/:product', uploadImage, require('./controller/create'));
+app.patch('/:product/:id', uploadImage, require('./controller/update'));
+app.delete('/:product/:id', uploadImage, require('./controller/delete'));
 
 module.exports = {
 	app: app,
