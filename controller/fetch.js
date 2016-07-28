@@ -8,7 +8,7 @@ var Product = require(global.__products_base + '/models/product');
 var fetch = function onFetch(req, res, next) {
 	var id = req.params.id;
 
-	var query = (id) ? _.extend(query, { _id: id }) : {};
+	var query = (id) ? { _id: id } : {};
 
 	Product.find(query, function onFind(err, doc) {
 		if (err) return next(err);
