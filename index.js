@@ -9,13 +9,13 @@ var uploadImage = multer().single('image');
 /**
  * Rest:: Products
  */
-app.get('/product/search', require('./controller/search'));
+app.get('/products/search', require('./controller/search'));
 
-app.get('/product', require('./controller/fetch'));
-app.get('/product/:id', require('./controller/fetch'));
-app.post('/product', uploadImage, require('./controller/create'));
-app.patch('/product/:id', uploadImage, require('./controller/update'));
-app.delete('/product/:id', uploadImage, require('./controller/delete'));
+app.get('/products', require('./controller/fetch'));
+app.get('/products/:id', require('./controller/fetch'));
+app.post('/products', uploadImage, require('./controller/create'));
+app.patch('/products/:id', uploadImage, require('./controller/update'));
+app.delete('/products/:id', uploadImage, require('./controller/delete'));
 
 module.exports = {
 	app: app,
