@@ -1,10 +1,12 @@
+var _ = require('underscore');
 var Product = require(global.__products_base + '/models/product');
 
-/**
- * Fetch a product
- */
 var fetch = function onFetch(req, res, next) {
-	Product.find({ _id: req.params.id }, function onFind(err, doc) {
+	var query = { user: req.user._id };
+
+	(req.params.id) ? _.extend(query, { _id: req.params.id }) : {};
+
+	Product.find(query, function onFind(err, doc) {
 		if (err) return next(err);
 		if (!doc || !doc.length) return next(new Error('No products found'));
 
