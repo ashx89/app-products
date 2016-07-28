@@ -21,14 +21,14 @@ function databaseOperation(product, req, res, next) {
 var create = function onCreate(req, res, next) {
 	var product = new Product(req.body);
 
-	product.url = '/products/' + product._id;
-	product.type = req.body.product;
+	product.url = '/' + req.params.product + '/' + product._id;
+	product.type = req.params.product;
 
 	if (req.file) {
 		upload({
 			req: req,
 			model: product,
-			folder: 'products/'
+			folder: 'products/' + req.params.product
 		}, function onImageUpload(err, result) {
 			if (err) return next(err);
 
