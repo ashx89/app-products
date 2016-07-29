@@ -7,7 +7,7 @@ function validTextLength(value) {
 }
 
 var productSchema = new mongoose.Schema({
-	user: { type: mongoose.Schema.Types.ObjectId },
+	account: { type: mongoose.Schema.Types.ObjectId },
 	title: {
 		type: String,
 		required: [true, 'Missing Title'],

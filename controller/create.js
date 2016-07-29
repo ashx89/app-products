@@ -7,7 +7,7 @@ var Product = require(global.__products_base + '/models/product');
  * @param {object} product. New product created
  */
 function databaseOperation(product, req, res, next) {
-	product.user = req.user._id;
+	product.account = req.user.account;
 
 	product.save(function onProductSave(err) {
 		if (err) return next(err);

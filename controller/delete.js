@@ -8,7 +8,7 @@ var Product = require(global.__products_base + '/models/product');
 var remove = function onDelete(req, res, next) {
 	var id = req.params.id;
 
-	var query = { _id: id, user: req.user._id };
+	var query = { _id: id, account: req.user.account };
 
 	Product.findOneAndRemove(query, function onRemove(err, product) {
 		if (err) return next(err);

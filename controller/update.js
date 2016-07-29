@@ -22,7 +22,7 @@ function databaseOperation(product, req, res, next) {
 var update = function onUpdate(req, res, next) {
 	var id = req.params.id;
 
-	Product.findOne({ _id: id, user: req.user._id }, function onProductUpdate(err, product) {
+	Product.findOne({ _id: id, account: req.user.account }, function onProductUpdate(err, product) {
 		if (err) return next(err);
 		if (!product) return next(new Error('No product item found'));
 
