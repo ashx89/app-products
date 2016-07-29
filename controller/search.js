@@ -4,7 +4,7 @@ var search = function onSearch(req, res, next) {
 	var opts = {
 		req: req,
 		query: _.extend({}, req.query),
-		model: require(global.__base + '/manager').ProductModel,
+		model: require('app-products').model,
 		sort: req.query.sort || 'title'
 	};
 
