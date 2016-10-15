@@ -5,17 +5,18 @@ var multer = require('multer');
 
 var app = express();
 var uploadImage = multer().single('image');
+var routeValidation = require('./middlewares/routeValidation');
 
 /**
  * Rest:: Products
  */
-app.get('/:product/search', require('./middlewares/routeValidation'), require('./controller/search'));
+app.get('/:product/search', routeValidation, require('./controller/search'));
 
-app.get('/:product', require('./middlewares/routeValidation'), require('./controller/fetch'));
-app.get('/:product/:id', require('./middlewares/routeValidation'), require('./controller/fetch'));
-app.post('/:product', require('./middlewares/routeValidation'), uploadImage, require('./controller/create'));
-app.patch('/:product/:id', require('./middlewares/routeValidation'), uploadImage, require('./controller/update'));
-app.delete('/:product/:id', require('./middlewares/routeValidation'), uploadImage, require('./controller/delete'));
+app.get('/:product', routeValidation, require('./controller/fetch'));
+app.get('/:product/:id', routeValidation, require('./controller/fetch'));
+app.post('/:product', routeValidation, uploadImage, require('./controller/create'));
+app.patch('/:product/:id', routeValidation, uploadImage, require('./controller/update'));
+app.delete('/:product/:id', routeValidation, uploadImage, require('./controller/delete'));
 
 module.exports = {
 	app: app,
